@@ -27,27 +27,27 @@ function openFullSize(evt) {
 	evt.preventDefault();
 
 	const originalImgLink = evt.target.dataset.source;
-	const instance = basicLightbox.create(`
-    <img src="${originalImgLink}">, {
-		onShow: (instance) => {};
-  onClose: (instance) => {};
-	}
-`);
+	const instance = basicLightbox.create(
+		`<img src="${originalImgLink}"
+`,
+		{
+			onShow: () => {
+				document.addEventListener("keydown", onListenerEscape);
+			},
+			onClose: () => {
+				document.removeEventListener("keydown", onListenerEscape);
+			},
+		}
+	);
 
-	instance.show();
+	instance.onShow();
 
 	document.addEventListener("keydown", (evt) => {
 		if (evt.key === "Escape") {
 			// const visible = basicLightbox.visible();
 			// if (visible) {
-				instance.close();
+			instance.onClose();
 			// }
 		}
 	});
 }
-
-// function checkPressEsc(e) {
-// 	if (e.code === "Escape") {
-// 		modal.close();
-// 	}
-// }

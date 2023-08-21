@@ -22,3 +22,4 @@ function openFullSize(evt) {
 	evt.preventDefault();
 }
 const galleryList = new SimpleLightbox(".gallery a");
+
