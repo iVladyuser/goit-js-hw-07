@@ -28,17 +28,26 @@ function openFullSize(evt) {
 
 	const originalImgLink = evt.target.dataset.source;
 	const instance = basicLightbox.create(`
-    <img src="${originalImgLink}">
+    <img src="${originalImgLink}">, {
+		onShow: (instance) => {};
+  onClose: (instance) => {};
+	}
 `);
 
 	instance.show();
 
 	document.addEventListener("keydown", (evt) => {
 		if (evt.key === "Escape") {
-			const visible = basicLightbox.visible();
-			if (visible) {
+			// const visible = basicLightbox.visible();
+			// if (visible) {
 				instance.close();
-			}
+			// }
 		}
 	});
 }
+
+// function checkPressEsc(e) {
+// 	if (e.code === "Escape") {
+// 		modal.close();
+// 	}
+// }
