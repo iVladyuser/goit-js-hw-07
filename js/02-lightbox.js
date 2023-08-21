@@ -21,10 +21,4 @@ function openFullSize(evt) {
 	}
 	evt.preventDefault();
 }
-var lightbox = new SimpleLightbox(".gallery a", {
-	/* options */
-});
-
-var lightbox = $(".gallery a").simpleLightbox({
-	/* options */
-});
+const galleryList = new SimpleLightbox(".gallery a");
